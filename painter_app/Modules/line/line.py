@@ -14,9 +14,6 @@ class Line:
         self._layout_width = len(self._layout[0]) if len(self._layout) > 0 else 0
         self._border_char = config.LINE['border']
 
-    INVALID_INPUT = 'Cannot draw Line with given inputs.'\
-    '\n'
-
     def draw_shape(self, x1, y1, x2, y2, char=None):
         """
         Draw Line

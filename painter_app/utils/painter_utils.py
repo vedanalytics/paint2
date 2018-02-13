@@ -1,6 +1,5 @@
 import os
 import sys
-import copy
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 OVERFLOW_MESSAGES = {
