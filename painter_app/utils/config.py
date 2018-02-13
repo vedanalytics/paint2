@@ -4,8 +4,8 @@ OUTER_LAYOUT = {
     "left_char": "|",
     "right_char": "|",
     "middle_char": " ",
-    "max_width": "500",
-    "max_width": "500"
+    "max_width": 500,
+    "max_height": 500
 }
 
 RECTANGLE = {

@@ -1,4 +1,4 @@
-from utils import config
+from painter_app.utils import config
 from .fill_color_validations import FillColorValidations
 import sys
 import os

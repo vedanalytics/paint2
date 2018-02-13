@@ -19,7 +19,7 @@ class PaintValidations:
         m_regex = re.compile(self.INPUT_REGEX_VALIDATORS['L'])
         r_regex = re.compile(self.INPUT_REGEX_VALIDATORS['R'])
         b_regex = re.compile(self.INPUT_REGEX_VALIDATORS['B'])
-        if len(cmd) > 0 and type(cmd) is str:
+        if type(cmd) is str and len(cmd) > 0:
             cmd = cmd.strip()
         else:
             raise ValueError(self.INVALID_INPUT)

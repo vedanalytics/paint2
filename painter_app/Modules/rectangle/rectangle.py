@@ -2,8 +2,8 @@ import sys
 import os
 import copy
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
-from utils import painter_utils
-from utils import config
+from painter_app.utils import painter_utils
+from painter_app.utils import config
 from .rectangle_validations import RectangleValidations
 
 
@@ -40,7 +40,7 @@ class Rectangle:
         Layout Matrix
 
         """
-        char = char if len(char) > 0 else self._border_char
+        char = char if char is not None and len(char) > 0 else self._border_char
         outer_layout = copy.deepcopy(self._layout)
         _validations = RectangleValidations(outer_layout, x1, y1, x2, y2)
         _validations.validate_rectangle()

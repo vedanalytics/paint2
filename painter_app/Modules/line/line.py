@@ -1,5 +1,5 @@
-from utils import painter_utils
-from utils import config
+from painter_app.utils import painter_utils
+from painter_app.utils import config
 from .line_validations import LineValidations
 import sys
 import os
@@ -43,7 +43,7 @@ class Line:
         Layout Matrix with Line added inside
 
         """
-        char = char if len(char) > 0 else self._border_char
+        char = char if char is not None and len(char) > 0 else self._border_char
         outer_layout = copy.deepcopy(self._layout)
         _validations = LineValidations(outer_layout, x1, y1, x2, y2)
         _validations.validate_line()

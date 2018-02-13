@@ -1,5 +1,4 @@
-from utils import painter_utils
-from utils import config
+from painter_app.utils import config
 import sys
 import os
 import copy

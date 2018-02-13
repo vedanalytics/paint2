@@ -29,22 +29,7 @@ def update_line(line_arr, x1, x2, left_char, right_char, middle_char):
                 line_arr[i] = right_char
     return line_arr
 
-
-def __get_line_from_layout(self, row_idx):
-    # Creating a copy of the matrix in order to avoid binding. If assigned directly, only reference gets copied
-    row = copy.deepcopy(self._layout_matrix)
-    assert isinstance(row_idx, object)
-    return row[row_idx]
-
-
-def __verify_fill_color_overflow(width, height, x, y):
-    if x < 1 or x > width or y < 1 or y > height:
-        return True
-    return False
-
-
 def order_inputs(x1, y1, x2, y2):
-    # type: (object, object, object, object) -> object
     if x1 > x2:
         x1, x2 = swap_inputs(x1,x2)
     if y1 > y2:
