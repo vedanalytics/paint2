@@ -8,8 +8,8 @@ class RectangleValidations:
         self._max_height = len(layout)-2
         self._max_width = len(layout[0])-2 if self._max_height > 0 else 0
         self.INPUT_RANGE_EXCEED ='Invalid Input for Rectangle' \
-                                 '\nx1 and x2 must be between 1 and ' + str(self._max_width-2) + '' \
-                                 '\ny1 and y2 must be between 1 and ' + str(self._max_height-2)
+                                 '\nx1 and x2 must be between 1 and ' + str(self._max_width) + '' \
+                                 '\ny1 and y2 must be between 1 and ' + str(self._max_height)
         self.NO_LAYOUT_FOUND = 'Please draw the layout first'
 
     def validate_rectangle(self):

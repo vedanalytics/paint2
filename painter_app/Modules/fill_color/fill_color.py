@@ -35,12 +35,13 @@ class FillColor:
         outer_layout = copy.deepcopy(self._layout)
         _validations = FillColorValidations(outer_layout, x, y)
         _validations.validate_fill_color()
+        self._to_replace = copy.deepcopy(outer_layout[y][x])
         outer_layout = self.__draw_fill_color(outer_layout, x, y, color, self._to_replace)
         return outer_layout
 
     def __draw_fill_color(self, layout, x, y, color, to_replace):
         height = len(layout)-2 if len(layout) > 0 else 0
-        width = len(layout[0]) if len(layout) > 0 else 0
+        width = len(layout[0])-2 if len(layout) > 0 else 0
         to_fill = set()
         to_fill.add((x, y))
         while to_fill:

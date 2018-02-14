@@ -136,5 +136,3 @@ class TestPainterMain(unittest.TestCase):
             self.assertIsInstance(ex,ValueError)
         print('Testing in input command for Line with invalid input')
 
-if __name__ == '__main__':
-    unittest.main()

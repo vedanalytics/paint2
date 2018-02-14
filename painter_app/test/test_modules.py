@@ -221,5 +221,3 @@ class TestModules(unittest.TestCase):
             self.assertIsInstance(ex, ValueError)
         print('Testing if exception is raised on error input for Fill Color')
 
-if __name__ == '__main__':
-    unittest.main()
