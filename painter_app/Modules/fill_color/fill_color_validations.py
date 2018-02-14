@@ -5,7 +5,7 @@ class FillColorValidations:
         self._layout = layout
         self._max_height = len(layout)-2
         self._max_width = len(layout[0])-2 if self._max_height > 0 else 0
-        self.INPUT_RANGE_EXCEED ='Invalid Input for Fill COlor' \
+        self.INPUT_RANGE_EXCEED ='Invalid Input for Fill Color' \
                                  '\nx must be between 1 and ' + str(self._max_width) + '' \
                                  '\ny must be between 1 and ' + str(self._max_height)
         self.NO_LAYOUT_FOUND = 'Please draw the layout first'
@@ -19,7 +19,7 @@ class FillColorValidations:
             raise ValueError(self.INPUT_RANGE_EXCEED)
 
     def __is_input_valid(self, width, height, x, y):
-        return True if 1 <= x <= width and 1 <= y < =height else False
+        return True if 1 <= x <= width and 1 <= y <= height else False
 
     def __is_layout_drawn(self, layout):
         return True if len(layout) > 0 else False

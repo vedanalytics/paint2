@@ -47,10 +47,10 @@ class FillColor:
             x, y = to_fill.pop()
             if not (1 <= x <= width and 1 <= y <= height):
                 continue
-            value = copy.deepcopy(layout[x][y])
+            value = copy.deepcopy(layout[y][x])
             if value != to_replace:
                 continue
-            layout[x][y] = color
+            layout[y][x] = color
             to_fill.add((x - 1, y))
             to_fill.add((x + 1, y))
             to_fill.add((x, y - 1))

@@ -45,7 +45,7 @@ class PaintMain:
         """
         layout = Layout(width, height, self._max_width, self._max_height)
         layout_matrix = layout.draw_shape()
-        self._layout_matrix = layout_matrix
+        self._layout_matrix = copy.deepcopy(layout_matrix)
         return layout_matrix
 
     def draw_line(self, x1, y1, x2, y2, char=None):
@@ -77,7 +77,7 @@ class PaintMain:
         layout = copy.deepcopy(self._layout_matrix)
         line = Line(layout)
         layout_matrix = line.draw_shape(x1, y1, x2, y2, char)
-        self._layout_matrix = layout_matrix
+        self._layout_matrix = copy.deepcopy(layout_matrix)
         return layout_matrix
 
     def draw_rectangle(self, x1, y1, x2, y2, char=None):
@@ -109,7 +109,7 @@ class PaintMain:
         layout = copy.deepcopy(self._layout_matrix)
         rectangle = Rectangle(layout)
         layout_matrix = rectangle.draw_shape(x1, y1, x2, y2, char)
-        self._layout_matrix = layout_matrix
+        self._layout_matrix = copy.deepcopy(layout_matrix)
         return layout_matrix
 
     def fill_color(self, x, y, color):

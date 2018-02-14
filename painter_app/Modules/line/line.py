@@ -45,24 +45,24 @@ class Line:
         _validations = LineValidations(outer_layout, x1, y1, x2, y2)
         _validations.validate_line()
         x1, y1, x2, y2 = painter_utils.order_inputs(x1, y1, x2, y2)
-        outer_layout = self.__draw_line(outer_layout, x1, y1, x2, y2, char)
+        outer_layout = copy.deepcopy(self.__draw_line(outer_layout, x1, y1, x2, y2, char))
         return outer_layout
 
     def __draw_line(self, layout, x1, y1, x2, y2, char):
         if y1 == y2:
             line = copy.deepcopy(layout[y1])
             line = painter_utils.update_line(line, x1, x2, char, char, char)
-            layout[y1] = line
+            layout[y1] = copy.deepcopy(line)
         elif x1 == x2:
             for i in range(y1, y2 + 1):
-                line = copy.deepcopy(layout[x1])
+                line = copy.deepcopy(layout[i])
                 line = painter_utils.update_line(line, x1, x1, char, char, char)
-                layout[i] = line
+                layout[i] = copy.deepcopy(line)
         else:
             x = x1
             for i in range(y1, y2 + 1):
                 line = copy.deepcopy(layout[i])
                 line = painter_utils.update_line(line, x, x, char, char, char)
-                layout[i] = line
+                layout[i] = copy.deepcopy(line)
                 x += 1
         return layout
