@@ -22,6 +22,8 @@ class PaintMain:
         }
         self._rectangle_border = config.RECTANGLE['border']
         self._line_border = config.LINE['border']
+        self._undo_stack = []
+        self._redo_stack = []
 
     is_input_overflown = False
 
@@ -140,7 +142,7 @@ class PaintMain:
         return layout_matrix
 
     def render(self, layout):
-        if not self.is_input_overflown:
+        if not self.is_input_overflown and len(layout) > 0:
             for item in layout:
                 print(''.join(item))
 
@@ -157,3 +159,25 @@ class PaintMain:
                 return self.draw_rectangle(int(cmd[1]), int(cmd[2]), int(cmd[3]), int(cmd[4]), self._rectangle_border)
             elif shape == 'B':
                 return self.fill_color(int(cmd[1]), int(cmd[2]), cmd[3])
+
+    def execute_command(self, input_cmd):
+
+        if input_cmd == 'Z' or input_cmd == 'z':
+            if len(self._undo_stack) > 0:
+                redo = self._undo_stack.pop()
+                self._redo_stack.append(redo)
+                self._layout_matrix = copy.deepcopy(redo)
+            layout = copy.deepcopy(self._undo_stack[-1]) if len(self._undo_stack) > 0 \
+                else copy.deepcopy(self._layout_matrix)
+            self._layout_matrix = copy.deepcopy(layout)
+        elif input_cmd == 'Y' or input_cmd == 'y':
+            if len(self._redo_stack) > 0:
+                undo = self._redo_stack.pop()
+                self._undo_stack.append(undo)
+            layout = copy.deepcopy(self._redo_stack[-1]) if len(self._redo_stack) > 0 \
+                else copy.deepcopy(self._layout_matrix)
+            self._layout_matrix = copy.deepcopy(layout)
+        else:
+            layout = copy.deepcopy(self.draw(input_cmd))
+            self._undo_stack.append(copy.deepcopy(layout))
+        return layout

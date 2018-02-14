@@ -15,7 +15,7 @@ class Painter:
 
     def execute_command(self, input_cmd):
         try:
-            self._layout_matrix = copy.deepcopy(self._paint_utils.draw(input_cmd))
+            self._layout_matrix = copy.deepcopy(self._paint_utils.execute_command(input_cmd))
             self._paint_utils.render(self._layout_matrix)
         except ValueError as ex:
             print(str(ex))
